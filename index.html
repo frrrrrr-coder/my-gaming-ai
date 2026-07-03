@@ -1,118 +1,262 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTFSRcoder | My Gaming AI</title>
-    <script src="https://jsdelivr.net"></script>
-    <style>
-        body { background: #07080a; color: #e2e8f0; font-family: 'Segoe UI', Roboto, sans-serif; }
-        .custom-scroll::-webkit-scrollbar { width: 6px; }
-        .custom-scroll::-webkit-scrollbar-track { background: #0f172a; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTFSRcoder | My Gaming AI</title>
+<script src="https://jsdelivr.net"></script>
+<style>
+body { background: #07080a; color: #e2e8f0; font-family: 'Segoe UI', Roboto, sans-serif; }
+.custom-scroll::-webkit-scrollbar { width: 6px; }
+.custom-scroll::-webkit-scrollbar-track { background: #0f172a; }
+.custom-scroll::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
+</style>
 </head>
 <body class="p-3 md:p-8 max-w-6xl mx-auto">
 
-    <!-- Шапка -->
-    <header class="text-center mb-8">
-        <h1 class="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-red-500 tracking-wider uppercase">My Gaming AI</h1>
-        <p class="text-gray-400 mt-2 text-sm md:text-base">15 специализированных ИИ-категорий с точной настройкой логики</p>
-    </header>
+<!-- Шапка -->
+<header class="text-center mb-8">
+<h1 class="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-red-500 tracking-wider uppercase">My Gaming AI</h1>
+<p class="text-gray-400 mt-2 text-sm md:text-base">15 специализированных ИИ-категорий с точной настройкой логики</p>
+</header>
 
-    <!-- Навигационная панель (Все твои 15 категорий сохранены) -->
-    <div class="bg-gray-900/40 p-3 rounded-2xl border border-gray-850 mb-6">
-        <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 px-2">Выберите нужную категорию контента:</div>
-        <nav class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 max-h-[280px] overflow-y-auto custom-scroll p-1">
-            <button onclick="switchTab('nicknames')" id="btn-nicknames" class="tab-btn bg-indigo-600 text-white font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🎮 1. Игровые Никнеймы</button>
-            <button onclick="switchTab('clans')" id="btn-clans" class="tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🛡️ 2. Названия Кланов</button>
-            <button onclick="switchTab('statuses')" id="btn-statuses" class="tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">💬 3. Статусы Профиля</button>
-            <button onclick="switchTab('items')" id="btn-items" class="tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">⚔️ 4. Игровой Лут</button>
-            <button onclick="switchTab('guildBio')" id="btn-guildBio" class="tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">📜 5. Описания Гильдий</button>
-            <button onclick="switchTab('youtube')" id="btn-youtube" class="tab-btn bg-gray-900 hover:bg-gray-800 text-red-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🔴 6. Сценарии YouTube</button>
-            <button onclick="switchTab('shorts')" id="btn-shorts" class="tab-btn bg-gray-900 hover:bg-gray-800 text-red-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">⚡ 7. Сценарии Shorts</button>
-            <button onclick="switchTab('tiktok')" id="btn-tiktok" class="tab-btn bg-gray-900 hover:bg-gray-800 text-red-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🎵 8. Сценарии TikTok</button>
-            <button onclick="switchTab('business')" id="btn-business" class="tab-btn bg-gray-900 hover:bg-gray-800 text-amber-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">💼 9. Игровой Бизнес</button>
-            <button onclick="switchTab('buildings')" id="btn-buildings" class="tab-btn bg-gray-900 hover:bg-gray-800 text-amber-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🏗️ 10. Планы Построек</button>
-            <button onclick="switchTab('ideas')" id="btn-ideas" class="tab-btn bg-gray-900 hover:bg-gray-800 text-purple-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">💡 11. Concept Игр</button>
-            <button onclick="switchTab('quests')" id="btn-quests" class="tab-btn bg-gray-900 hover:bg-gray-800 text-purple-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🗺️ 12. Квесты и Миссии</button>
-            <button onclick="switchTab('lore')" id="btn-lore" class="tab-btn bg-gray-900 hover:bg-gray-800 text-purple-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🌍 13. Лор и Вселенные</button>
-            <button onclick="switchTab('achievements')" id="btn-achievements" class="tab-btn bg-gray-900 hover:bg-gray-800 text-purple-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🏆 14. Ачивки и Трофеи</button>
-            <button onclick="switchTab('prompts')" id="btn-prompts" class="tab-btn bg-gray-900 hover:bg-gray-800 text-emerald-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🎨 15. Промпты для ИИ</button>
-        </nav>
-    </div>
+<!-- Навигационная панель (Все твои 15 категорий сохранены) -->
+<div class="bg-gray-900/40 p-3 rounded-2xl border border-gray-850 mb-6">
+<div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 px-2">Выберите нужную категорию контента:</div>
+<nav class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 max-h-[280px] overflow-y-auto custom-scroll p-1">
+<button onclick="switchTab('nicknames')" id="btn-nicknames" class="tab-btn bg-indigo-600 text-white font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🎮 1. Игровые Никнеймы</button>
+<button onclick="switchTab('clans')" id="btn-clans" class="tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🛡️ 2. Названия Кланов</button>
+<button onclick="switchTab('statuses')" id="btn-statuses" class="tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">💬 3. Статусы Профиля</button>
+<button onclick="switchTab('items')" id="btn-items" class="tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">⚔️ 4. Игровой Лут</button>
+<button onclick="switchTab('guildBio')" id="btn-guildBio" class="tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">📜 5. Описания Гильдий</button>
+<button onclick="switchTab('youtube')" id="btn-youtube" class="tab-btn bg-gray-900 hover:bg-gray-800 text-red-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🔴 6. Сценарии YouTube</button>
+<button onclick="switchTab('shorts')" id="btn-shorts" class="tab-btn bg-gray-900 hover:bg-gray-800 text-red-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">⚡ 7. Сценарии Shorts</button>
+<button onclick="switchTab('tiktok')" id="btn-tiktok" class="tab-btn bg-gray-900 hover:bg-gray-800 text-red-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🎵 8. Сценарии TikTok</button>
+<button onclick="switchTab('business')" id="btn-business" class="tab-btn bg-gray-900 hover:bg-gray-800 text-amber-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">💼 9. Игровой Бизнес</button>
+<button onclick="switchTab('buildings')" id="btn-buildings" class="tab-btn bg-gray-900 hover:bg-gray-800 text-amber-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🏗️ 10. Планы Построек</button>
+<button onclick="switchTab('ideas')" id="btn-ideas" class="tab-btn bg-gray-900 hover:bg-gray-800 text-purple-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">💡 11. Concept Игр</button>
+<button onclick="switchTab('quests')" id="btn-quests" class="tab-btn bg-gray-900 hover:bg-gray-800 text-purple-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🗺️ 12. Квесты и Миссии</button>
+<button onclick="switchTab('lore')" id="btn-lore" class="tab-btn bg-gray-900 hover:bg-gray-800 text-purple-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🌍 13. Лор и Вселенные</button>
+<button onclick="switchTab('achievements')" id="btn-achievements" class="tab-btn bg-gray-900 hover:bg-gray-800 text-purple-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🏆 14. Ачивки и Трофеи</button>
+<button onclick="switchTab('prompts')" id="btn-prompts" class="tab-btn bg-gray-900 hover:bg-gray-800 text-emerald-400 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left">🎨 15. Промпты для ИИ</button>
+</nav>
+</div>
 
-    <!-- Основной ИИ блок -->
-    <main class="bg-gray-900/80 border border-gray-850 rounded-2xl p-5 md:p-8 shadow-2xl relative">
-        <div class="mb-5">
-            <div id="tab-badge" class="inline-block text-[10px] uppercase font-black tracking-widest bg-indigo-500/20 text-indigo-400 px-2.5 py-1 rounded-md mb-2">Прямая генерация</div>
-            <h2 id="tab-title" class="text-xl md:text-3xl font-extrabold text-white">Игровые никнеймы</h2>
-            <p id="tab-desc" class="text-gray-400 text-xs md:text-sm mt-1">ИИ сгенерирует список уникальных и крутых никнеймов по вашей теме.</p>
-        </div>
+<!-- Основной ИИ блок -->
+<main class="bg-gray-900/80 border border-gray-850 rounded-2xl p-5 md:p-8 shadow-2xl relative">
+<div class="mb-5">
+<div id="tab-badge" class="inline-block text-[10px] uppercase font-black tracking-widest bg-indigo-500/20 text-indigo-400 px-2.5 py-1 rounded-md mb-2">Прямая генерация</div>
+<h2 id="tab-title" class="text-xl md:text-3xl font-extrabold text-white">Игровые никнеймы</h2>
+<p id="tab-desc" class="text-gray-400 text-xs md:text-sm mt-1">ИИ сгенерирует список уникальных и крутых никнеймов по вашей теме.</p>
+</div>
 
-        <div class="flex flex-col sm:flex-row gap-2 mb-6">
-            <input type="text" id="user-prompt" placeholder="Например: киберпанк, демоны, аниме..." 
-                   class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-4 text-white placeholder-gray-500 text-base focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
-            <button onclick="generateAI()" id="action-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-black px-8 py-4 rounded-xl text-base transition cursor-pointer shrink-0">Сгенерировать</button>
-        </div>
+<div class="flex flex-col sm:flex-row gap-2 mb-6">
+<input type="text" id="user-prompt" placeholder="Например: киберпанк, демоны, аниме..."
+class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-4 text-white placeholder-gray-500 text-base focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500">
+<button onclick="generateAI()" id="action-btn" class="bg-indigo-500 hover:bg-indigo-600 text-white font-black px-8 py-4 rounded-xl text-base transition cursor-pointer shrink-0">Сгенерировать</button>
+</div>
 
-        <!-- Вывод результатов -->
-        <div id="output-container" class="bg-gray-950 border border-gray-850 rounded-xl p-5 min-h-[250px] relative flex flex-col justify-between">
-            <div id="ai-loading" class="hidden text-center pt-20 pb-20">
-                <div id="loading-spinner" class="inline-block w-9 h-9 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-3"></div>
-                <div id="loading-text" class="text-indigo-400 font-bold animate-pulse text-base">Нейросеть генерирует контент...</div>
-            </div>
-            <div id="ai-output" class="text-gray-300 whitespace-pre-line leading-relaxed text-sm md:text-base mb-4">Введите тему и нажмите кнопку для генерации контента.</div>
-        </div>
-    </main>
+<!-- Вывод результатов -->
+<div id="output-container" class="bg-gray-950 border border-gray-850 rounded-xl p-5 min-h-[250px] relative flex flex-col justify-between">
+<div id="ai-loading" class="hidden text-center pt-20 pb-20">
+<div id="loading-spinner" class="inline-block w-9 h-9 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+<div id="loading-text" class="text-indigo-400 font-bold animate-pulse text-base">Нейросеть генерирует контент...</div>
+</div>
+<div id="ai-output" class="text-gray-300 whitespace-pre-line leading-relaxed text-sm md:text-base mb-4">Введите тему и нажмите кнопку для генерации контента.</div>
+</div>
+</main>
 
-    <script>
-        let currentTab = 'nicknames';
+<script>
+let currentTab = 'nicknames';
 
-        const tabsConfig = {
-            nicknames: {
-                title: "Игровые никнеймы",
-                desc: "Введите тему, и ИИ создаст список из 10 крутых ников на английском и русском.",
-                placeholder: "Например: киберпанк, демон, снайпер...",
-                isLongScript: false,
-                systemPrompt: "Ты — генератор никнеймов. Напиши ровно 10 крутых, коротких игровых никнеймов по теме: "
-            },
-            clans: {
-                title: "Названия Кланов и Гильдий",
-                desc: "Введите стиль или стихию команды, чтобы получить звучные названия кланов с тегами.",
-                placeholder: "Например: темные рыцари, викинги, космос...",
-                isLongScript: false,
-                systemPrompt: "Ты — генератор названий кланов. Напиши ровно 10 мощных названий гильдий с тегами в скобках по теме: "
-            },
-            statuses: {
-                title: "Статусы профиля",
-                desc: "Короткие пафосные или забавные строчки для вашего игрового профиля (Discord, Steam).",
-                placeholder: "Например: хардкорщик, токсик, ленивый геймер...",
-                isLongScript: false,
-                systemPrompt: "Ты — генератор статусов. Напиши ровно 5 коротких крутых игровых статусов в одну строчку для профиля по теме: "
-            },
-            items: {
-                title: "Игровой Лут и Предметы",
-                desc: "Придумайте названия для легендарного оружия, мечей, посохов или брони.",
-                placeholder: "Например: ледяной клинок, космический дробовик...",
-                isLongScript: false,
-                systemPrompt: "Ты — геймдизайнер предметов. Напиши ровно 8 названий легендарного оружия или предметов по теме: "
-            },
-            guildBio: {
-                title: "Описания Гильдий и Кланов",
-                desc: "Короткий, призывающий вступить в клан текст (до 3 предложений) для описания гильдии.",
-                placeholder: "Например: ПвП клан, фарм ресурсов, адекватные игроки...",
-                isLongScript: false,
-                systemPrompt: "Ты — глава гильдии. Напиши ОЧЕНЬ КРАТКОЕ (до 3 предложений) описание-приглашение в клан на тему: "
-            },
-            business: {
-                title: "Игровой Бизнес и Экономика",
-                desc: "Введите тип бизнеса, и ИИ распишет пошаговый план заработка игровой валюты.",
-                placeholder: "Например: Оружейная лавка, Фарм-бизнес в MMO...",
-                isLongScript: false,
-                systemPrompt: "Ты — эксперт по игровой экономике. Напиши адекватный план запуска игрового БИЗНЕСА (название, 3 этапа развития, методы заработка) на тему: "
-            },
-            buildings: {
-                title: "Планы Построек и Архитектура",
-                desc: "Укажите тип здания, чтобы ИИ составил список необходимых ресурсов и пошаговую схему строительства.",
-placeholder: "Например: Средневековый замок в Minecraft, База в Fallout...",isLongScript: false,systemPrompt: "Ты — архитектор игровых миров. Напиши подробный технический ПЛАН ПОСТРОЙКИ (список материалов, размеры, 4 пошаговых этапа возведения) для объекта: "},ideas: {title: "Концепты Новых Игр",desc: "ИИ сгенерирует краткую базовую идею игры (Название, Жанр, Главная фишка).",placeholder: "Например: Хоррор на заброшенной станции, Стратегия про муравьев...",isLongScript: false,systemPrompt: "Ты — геймдизайнер. Напиши короткий концепт игры (название, genre, фишка) без воды на тему: "},quests: {title: "Квесты и Миссии",desc: "Получите четкий пошаговый список целей квеста.",placeholder: "Например: Ограбление поезда, Спасение принцессы...",isLongScript: false,systemPrompt: "Ты — создатель квестов. Напиши строго список из 3-4 игровых задач (шагов прохождения) для квеста: "},lore: {title: "Лор и История Фракций",desc: "Создайте лаконичные особенности игрового мира или фракции в 4-5 предложениях.",placeholder: "Например: Империя стимпанк-роботов, Подводные мутанты...",isLongScript: false,systemPrompt: "Ты — сценарист игровых вселенных. Напиши суть лора фракции или мира (краткое описание и 2 особенности) для: "},achievements: {title: "Ачивки и Трофеи",desc: "ИИ сгенерирует список из 5 ачивок с крутыми игровыми названиями и условиями получения.",placeholder: "Например: За прохождение на хардкоре, За сбор всех монет...",isLongScript: false,systemPrompt: "Ты — создатель игровых достижений. Придумай ровно 5 ачивок (Название и короткое условие получения) на тему: "},prompts: {title: "Промпты для ИИ-Картинок",desc: "ИИ создаст точные англоязычные промпты для Midjourney/DALL-E на игровую тематику.",placeholder: "Например: Кибернетический волк, Замок в облаках...",isLongScript: false,systemPrompt: "Ты — инженер промптов. Напиши ровно 2 подробных игровых промпта на английском языке для генерации арта в Midjourney по теме: "},youtube: {title: "Сценарии для Длинных YouTube Видео",desc: "ИИ напишет 3 гигантских, подробнейших сценария для больших видео (от 10 мин) с визуалом, звуками и текстом реплик.",placeholder: "Например: История создания GTA, Секреты Сталкер 2...",isLongScript: true,systemPrompt: "Ты — профессиональный YouTube-сценарист. Напиши масштабный, ОГРОМНЫЙ И РАСПИСАННЫЙ ДО КАЖДОЙ СЕКУНДЫ сценарий длинного видео (3 гигантских блока/варианта с таймкодами, [ВИЗУАЛЬНЫЙ РЯДОМ], [ПОЛНЫМ ТЕКСТОМ СПИКЕРА] и [ЗВУКАМИ]) на тему: "},shorts: {title: "Сценарии для YouTube Shorts",desc: "ИИ создаст 3 детальных сценария коротких видео с удержанием, триггерами, визуальным планом и звуками посекундно.",placeholder: "Например: Главный секрет Майнкрафта, Топ 3 пасхалки...",isLongScript: true,systemPrompt: "Ты — продюсер Shorts. Напиши ровно 3 РАЗНЫХ ОГРОМНЫХ, РАСПИСАННЫХ ДО КАЖДОЙ СЕКУНДЫ сценария для YouTube Shorts (укажи таймкоды, [ВИЗУАЛ], [ПОЛНЫЙ ТЕКСТ СПИКЕРА] и [SFX-ЗВУКИ]) на тему: "},tiktok: {title: "Сценарии для Трендов TikTok",desc: "ИИ разработает 3 огромных вирусных сценария под тренды с указанием мимики, динамики кадра и звуковых эффектов по секундам.",placeholder: "Например: Мемы про геймеров, Типы игроков в Доту...",isLongScript: true,systemPrompt: "Ты — создатель вирусного контента в TikTok. Напиши ровно 3 РАЗНЫХ ОГРОМНЫХ И ПРОРАБОТАННЫХ ПО СЕКУНДАМ сценария для TikTok (с детальным разделением на [ВИЗУАЛ], [РЕПЛИКИ] и [МУЗЫКУ]) на тему: "}};function switchTab(tabName) {currentTab = tabName;const config = tabsConfig[tabName];document.getElementById('tab-title').innerText = config.title;document.getElementById('tab-desc').innerText = config.desc;document.getElementById('user-prompt').placeholder = config.placeholder;document.getElementById('user-prompt').value = "";document.getElementById('ai-output').innerText = config.isLongScript ? "Ожидаю тему для проработки 3 огромных посекундных сценариев..." : "Ожидаю тему для генерации...";const badge = document.getElementById('tab-badge');const actionBtn = document.getElementById('action-btn');const spinner = document.getElementById('loading-spinner');if (config.isLongScript) {badge.innerText = "Режим: Мега-сценарий по секундам";badge.className = "inline-block text-[10px] uppercase font-black tracking-widest bg-red-500/20 text-red-400 px-2.5 py-1 rounded-md mb-2";actionBtn.className = "bg-red-500 hover:bg-red-600 text-white font-black px-8 py-4 rounded-xl text-base transition cursor-pointer shrink-0 shadow-lg shadow-red-500/20";spinner.className = "inline-block w-9 h-9 border-4 border-red-500 border-t-transparent rounded-full animate-spin mb-3";} else {badge.innerText = "Режим: Прямой результат";badge.className = "inline-block text-[10px] uppercase font-black tracking-widest bg-indigo-500/20 text-indigo-400 px-2.5 py-1 rounded-md mb-2";actionBtn.className = "bg-indigo-500 hover:bg-indigo-600 text-white font-black px-8 py-4 rounded-xl text-base transition cursor-pointer shrink-0 shadow-lg shadow-indigo-500/20";spinner.className = "inline-block w-9 h-9 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-3";}document.querySelectorAll('.tab-btn').forEach(btn => {btn.className = "tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left";});const activeBtn = document.getElementById(btn-${tabName});let activeColor = config.isLongScript ? 'bg-red-600' : 'bg-indigo-600';activeBtn.className = tab-btn text-white font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left shadow-lg ${activeColor};}async function generateAI() {const promptInput = document.getElementById('user-prompt').value.trim();const outputDiv = document.getElementById('ai-output');const loadingDiv = document.getElementById('ai-loading');if (!promptInput) {alert("Пожалуйста, укажите тему!");return;}outputDiv.classList.add('hidden');loadingDiv.classList.remove('hidden');const currentConfig = tabsConfig[currentTab];let finalPrompt = "";if (currentConfig.isLongScript) {finalPrompt = ${currentConfig.systemPrompt} "${promptInput}".  ТРЕБОВАНИЯ: Выдай ровно 3 отдельных сценария (Вариант №1, Вариант №2, Вариант №3). Каждый должен быть ОГРОМНЫМ, расписанным до мельчайших деталей по секундам (00:00-00:10 и т.д.).  Обязательно включи блоки: [ВИЗУАЛЬНЫЙ РЯД], [ПОЛНЫЙ ТЕКСТ СПИКЕРА] (длинные дословные реплики) и [ЗВУКИ/МУЗЫКА]. Не используй сокращений.;} else {finalPrompt = ${currentConfig.systemPrompt} "${promptInput}".  ТРЕБОВАНИЯ: Пиши СТРОГО готовый результат в соответствии со своей ролью. Никаких сценариев видео, никаких вступлений, приветствий и лишней воды. Выдавай только чистый игровой контент.;}try {const response = await fetch('duckduckgo.com', {method: 'POST',headers: { 'Content-Type': 'application/json' },body: JSON.stringify({model: "meta-llama/Llama-3-70b-instruct",messages: [{ role: "user", content: finalPrompt }]})});if (!response.ok) throw new Error();const data = await response.json();outputDiv.innerText = data.choices.message.content;} catch (error) {outputDiv.innerText = preciseFallback(currentTab, promptInput, currentConfig.isLongScript);} finally {loadingDiv.classList.add('hidden');outputDiv.classList.remove('hidden');}}function preciseFallback(tab, theme, isLong) {if (isLong) {let res = 🤖 [Локальный ИИ] Сгенерировано 3 масштабных сценария по секундам на тему "${theme}":\n\n;for(let i=1; i<=3; i++) {res += -----------------------------------------\n🎬 ПОСЕКУНДНЫЙ СЦЕНАРИЙ ВАРИАНТ №${i}\n-----------------------------------------\n;res += ⏱️ [00:00 - 00:08] — ХУК И АНИМАЦИЯ\n📺 ВИЗУАЛ: Камера резко наводится на объект. Всплывают неоновые титры по теме "${theme}".\n🎙️ ТЕКСТ: "Вы совершали эту ошибку? Сегодня мы разберем ${theme} до молекул!"\n🎵 ЗВУКИ: Нарастающий Cinematic Sub-Bass.\n\n;}return res;} else {if (tab === 'business') {return 🤖 [Локальный ИИ] План бизнеса по теме "${theme}":\n\n1. Название: ${theme.toUpperCase()} Industrial\n2. Старт: Сбор стартового капитала.\n3. Развитие: Автоматизация.\n4. Доход: От 50,000 в час.;}if (tab === 'buildings') {return 🤖 [Локальный ИИ] План постройки по теме "${theme}":\n\n📦 РЕСУРСЫ: Камень (x200), Дерево (x150).\n🛠️ ЭТАПЫ:\n1. Фундамент.\n2. Стены.\n3. Декор.\n4. Защита.;}return 🤖 [Локальный ИИ] Результат для "${theme}":\n• Alpha_${theme}\n• Cyber_${theme}_Pro\n• Legacy-${theme};}}
+const tabsConfig = {
+nicknames: {
+title: "Игровые никнеймы",
+desc: "Введите тему, и ИИ создаст список из 10 крутых ников на английском и русском.",
+placeholder: "Например: киберпанк, демон, снайпер...",
+isLongScript: false,
+systemPrompt: "Ты — генератор никнеймов. Напиши ровно 10 крутых, коротких игровых никнеймов по теме: "
+},
+clans: {
+title: "Названия Кланов и Гильдий",
+desc: "Введите стиль или стихию команды, чтобы получить звучные названия кланов с тегами.",
+placeholder: "Например: темные рыцари, викинги, космос...",
+isLongScript: false,
+systemPrompt: "Ты — генератор названий кланов. Напиши ровно 10 мощных названий гильдий с тегами в скобках по теме: "
+},
+statuses: {
+title: "Статусы профиля",
+desc: "Короткие пафосные или забавные строчки для вашего игрового профиля (Discord, Steam).",
+placeholder: "Например: хардкорщик, токсик, ленивый геймер...",
+isLongScript: false,
+systemPrompt: "Ты — генератор статусов. Напиши ровно 5 коротких крутых игровых статусов в одну строчку для профиля по теме: "
+},
+items: {
+title: "Игровой Лут и Предметы",
+desc: "Придумайте названия для легендарного оружия, мечей, посохов или брони.",
+placeholder: "Например: ледяной клинок, космический дробовик...",
+isLongScript: false,
+systemPrompt: "Ты — геймдизайнер предметов. Напиши ровно 8 названий легендарного оружия или предметов по теме: "
+},
+guildBio: {
+title: "Описания Гильдий и Кланов",
+desc: "Короткий, призывающий вступить в клан текст (до 3 предложений) для описания гильдии.",
+placeholder: "Например: ПвП клан, фарм ресурсов, адекватные игроки...",
+isLongScript: false,
+systemPrompt: "Ты — глава гильдии. Напиши ОЧЕНЬ КРАТКОЕ (до 3 предложений) описание-приглашение в клан на тему: "
+},
+business: {
+title: "Игровой Бизнес и Экономика",
+desc: "Введите тип бизнеса, и ИИ распишет пошаговый план заработка игровой валюты.",
+placeholder: "Например: Оружейная лавка, Фарм-бизнес в MMO...",
+isLongScript: false,
+systemPrompt: "Ты — эксперт по игровой экономике. Напиши адекватный план запуска игрового БИЗНЕСА (название, 3 этапа развития, методы заработка) на тему: "
+},
+buildings: {
+title: "Планы Построек и Архитектура",
+desc: "Укажите тип здания, чтобы ИИ составил список необходимых ресурсов и пошаговую схему строительства.",
+
+placeholder: "Например: Средневековый замок в Minecraft, База в Fallout...",
+isLongScript: false,
+systemPrompt: "Ты — архитектор игровых миров. Напиши подробный технический ПЛАН ПОСТРОЙКИ (список материалов, размеры, 4 пошаговых этапа возведения) для объекта: "
+},
+ideas: {
+title: "Концепты Новых Игр",
+desc: "ИИ сгенерирует краткую базовую идею игры (Название, Жанр, Главная фишка).",
+placeholder: "Например: Хоррор на заброшенной станции, Стратегия про муравьев...",
+isLongScript: false,
+systemPrompt: "Ты — геймдизайнер. Напиши короткий концепт игры (название, genre, фишка) без воды на тему: "
+},
+quests: {
+title: "Квесты и Миссии",
+desc: "Получите четкий пошаговый список целей квеста.",
+placeholder: "Например: Ограбление поезда, Спасение принцессы...",
+isLongScript: false,
+systemPrompt: "Ты — создатель квестов. Напиши строго список из 3-4 игровых задач (шагов прохождения) для квеста: "
+},
+lore: {
+title: "Лор и История Фракций",
+desc: "Создайте лаконичные особенности игрового мира или фракции в 4-5 предложениях.",
+placeholder: "Например: Империя стимпанк-роботов, Подводные мутанты...",
+isLongScript: false,
+systemPrompt: "Ты — сценарист игровых вселенных. Напиши суть лора фракции или мира (краткое описание и 2 особенности) для: "
+},
+achievements: {
+title: "Ачивки и Трофеи",
+desc: "ИИ сгенерирует список из 5 ачивок с крутыми игровыми названиями и условиями получения.",
+placeholder: "Например: За прохождение на хардкоре, За сбор всех монет...",
+isLongScript: false,
+systemPrompt: "Ты — создатель игровых достижений. Придумай ровно 5 ачивок (Название и короткое условие получения) на тему: "
+},
+prompts: {
+title: "Промпты для ИИ-Картинок",
+desc: "ИИ создаст точные англоязычные промпты для Midjourney/DALL-E на игровую тематику.",
+placeholder: "Например: Кибернетический волк, Замок в облаках...",
+isLongScript: false,
+systemPrompt: "Ты — инженер промптов. Напиши ровно 2 подробных игровых промпта на английском языке для генерации арта в Midjourney по теме: "
+},
+youtube: {
+title: "Сценарии для Длинных YouTube Видео",
+desc: "ИИ напишет 3 гигантских, подробнейших сценария для больших видео (от 10 мин) с визуалом, звуками и текстом реплик.",
+placeholder: "Например: История создания GTA, Секреты Сталкер 2...",
+isLongScript: true,
+systemPrompt: "Ты — профессиональный YouTube-сценарист. Напиши масштабный, ОГРОМНЫЙ И РАСПИСАННЫЙ ДО КАЖДОЙ СЕКУНДЫ сценарий длинного видео (3 гигантских блока/варианта с таймкодами, [ВИЗУАЛЬНЫЙ РЯДОМ], [ПОЛНЫМ ТЕКСТОМ СПИКЕРА] и [ЗВУКАМИ]) на тему: "
+},
+shorts: {
+title: "Сценарии для YouTube Shorts",
+desc: "ИИ создаст 3 детальных сценария коротких видео с удержанием, триггерами, визуальным планом и звуками посекундно.",
+placeholder: "Например: Главный секрет Майнкрафта, Топ 3 пасхалки...",
+isLongScript: true,
+systemPrompt: "Ты — продюсер Shorts. Напиши ровно 3 РАЗНЫХ ОГРОМНЫХ, РАСПИСАННЫХ ДО КАЖДОЙ СЕКУНДЫ сценария для YouTube Shorts (укажи таймкоды, [ВИЗУАЛ], [ПОЛНЫЙ ТЕКСТ СПИКЕРА] и [SFX-ЗВУКИ]) на тему: "
+},
+tiktok: {
+title: "Сценарии для Трендов TikTok",
+desc: "ИИ разработает 3 огромных вирусных сценария под тренды с указанием мимики, динамики кадра и звуковых эффектов по секундам.",
+placeholder: "Например: Мемы про геймеров, Типы игроков в Доту...",
+isLongScript: true,
+systemPrompt: "Ты — создатель вирусного контента в TikTok. Напиши ровно 3 РАЗНЫХ ОГРОМНЫХ И ПРОРАБОТАННЫХ ПО СЕКУНДАМ сценария для TikTok (с детальным разделением на [ВИЗУАЛ], [РЕПЛИКИ] и [МУЗЫКУ]) на тему: "
+}
+};
+function switchTab(tabName) {
+currentTab = tabName;
+const config = tabsConfig[tabName];
+document.getElementById('tab-title').innerText = config.title;
+document.getElementById('tab-desc').innerText = config.desc;
+document.getElementById('user-prompt').placeholder = config.placeholder;
+document.getElementById('user-prompt').value = "";
+document.getElementById('ai-output').innerText = config.isLongScript ? "Ожидаю тему для проработки 3 огромных посекундных сценариев..." : "Ожидаю тему для генерации...";
+const badge = document.getElementById('tab-badge');
+const actionBtn = document.getElementById('action-btn');
+const spinner = document.getElementById('loading-spinner');
+if (config.isLongScript) {
+badge.innerText = "Режим: Мега-сценарий по секундам";
+badge.className = "inline-block text-[10px] uppercase font-black tracking-widest bg-red-500/20 text-red-400 px-2.5 py-1 rounded-md mb-2";
+actionBtn.className = "bg-red-500 hover:bg-red-600 text-white font-black px-8 py-4 rounded-xl text-base transition cursor-pointer shrink-0 shadow-lg shadow-red-500/20";
+spinner.className = "inline-block w-9 h-9 border-4 border-red-500 border-t-transparent rounded-full animate-spin mb-3";
+} else {
+badge.innerText = "Режим: Прямой результат";
+badge.className = "inline-block text-[10px] uppercase font-black tracking-widest bg-indigo-500/20 text-indigo-400 px-2.5 py-1 rounded-md mb-2";
+actionBtn.className = "bg-indigo-500 hover:bg-indigo-600 text-white font-black px-8 py-4 rounded-xl text-base transition cursor-pointer shrink-0 shadow-lg shadow-indigo-500/20";
+spinner.className = "inline-block w-9 h-9 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-3";
+}
+document.querySelectorAll('.tab-btn').forEach(btn => {
+btn.className = "tab-btn bg-gray-900 hover:bg-gray-800 text-gray-300 font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left";
+});
+const activeBtn = document.getElementById(btn-${tabName});
+let activeColor = config.isLongScript ? 'bg-red-600' : 'bg-indigo-600';
+activeBtn.className = tab-btn text-white font-bold py-2.5 px-3 rounded-xl text-xs transition cursor-pointer text-left shadow-lg ${activeColor};
+}
+async function generateAI() {
+const promptInput = document.getElementById('user-prompt').value.trim();
+const outputDiv = document.getElementById('ai-output');
+const loadingDiv = document.getElementById('ai-loading');
+if (!promptInput) {
+alert("Пожалуйста, укажите тему!");
+return;
+}
+outputDiv.classList.add('hidden');
+loadingDiv.classList.remove('hidden');
+const currentConfig = tabsConfig[currentTab];
+let finalPrompt = "";
+if (currentConfig.isLongScript) {
+finalPrompt = ${currentConfig.systemPrompt} "${promptInput}". ТРЕБОВАНИЯ: Выдай ровно 3 отдельных сценария (Вариант №1, Вариант №2, Вариант №3). Каждый должен быть ОГРОМНЫМ, расписанным до мельчайших деталей по секундам (00:00-00:10 и т.д.). Обязательно включи блоки: [ВИЗУАЛЬНЫЙ РЯД], [ПОЛНЫЙ ТЕКСТ СПИКЕРА] (длинные дословные реплики) и [ЗВУКИ/МУЗЫКА]. Не используй сокращений.;
+} else {
+finalPrompt = ${currentConfig.systemPrompt} "${promptInput}". ТРЕБОВАНИЯ: Пиши СТРОГО готовый результат в соответствии со своей ролью. Никаких сценариев видео, никаких вступлений, приветствий и лишней воды. Выдавай только чистый игровой контент.;
+}
+try {
+const response = await fetch('duckduckgo.com', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+model: "meta-llama/Llama-3-70b-instruct",
+messages: [{ role: "user", content: finalPrompt }]
+})
+});
+if (!response.ok) throw new Error();
+const data = await response.json();
+outputDiv.innerText = data.choices.message.content;
+} catch (error) {
+outputDiv.innerText = preciseFallback(currentTab, promptInput, currentConfig.isLongScript);
+} finally {
+loadingDiv.classList.add('hidden');
+outputDiv.classList.remove('hidden');
+}
+}
+function preciseFallback(tab, theme, isLong) {
+if (isLong) {
+let res = 🤖 [Локальный ИИ] Сгенерировано 3 масштабных сценария по секундам на тему "${theme}":\n\n;
+for(let i=1; i<=3; i++) {
+res += -----------------------------------------\n🎬 ПОСЕКУНДНЫЙ СЦЕНАРИЙ ВАРИАНТ №${i}\n-----------------------------------------\n;
+res += ⏱️ [00:00 - 00:08] — ХУК И АНИМАЦИЯ\n📺 ВИЗУАЛ: Камера резко наводится на объект. Всплывают неоновые титры по теме "${theme}".\n🎙️ ТЕКСТ: "Вы совершали эту ошибку? Сегодня мы разберем ${theme} до молекул!"\n🎵 ЗВУКИ: Нарастающий Cinematic Sub-Bass.\n\n;
+}
+return res;
+} else {
+if (tab === 'business') {
+return 🤖 [Локальный ИИ] План бизнеса по теме "${theme}":\n\n1. Название: ${theme.toUpperCase()} Industrial\n2. Старт: Сбор стартового капитала.\n3. Развитие: Автоматизация.\n4. Доход: От 50,000 в час.;
+}
+if (tab === 'buildings') {
+return 🤖 [Локальный ИИ] План постройки по теме "${theme}":\n\n📦 РЕСУРСЫ: Камень (x200), Дерево (x150).\n🛠️ ЭТАПЫ:\n1. Фундамент.\n2. Стены.\n3. Декор.\n4. Защита.;
+}
+return 🤖 [Локальный ИИ] Результат для "${theme}":\n• Alpha_${theme}\n• Cyber_${theme}_Pro\n• Legacy-${theme};
+}
+}
